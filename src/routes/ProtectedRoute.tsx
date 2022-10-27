@@ -1,3 +1,4 @@
+import { getAccessToken } from "@/utils/localStorage";
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
@@ -10,7 +11,7 @@ const ProtectedRoute = ({
   isTokenRequired: boolean;
   redirectPath: string;
 }) => {
-  const token = window.localStorage.getItem("jwt");
+  const token = getAccessToken();
   const location = useLocation();
 
   if (isTokenRequired === (token !== null))
