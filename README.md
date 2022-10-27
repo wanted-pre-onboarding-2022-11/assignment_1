@@ -1,6 +1,8 @@
 # 원티드 프리온보딩 프론트엔드 11조
 
-🚀 배포 URL
+### [배포 사이트 바로가기](https://elegant-brigadeiros-178dab.netlify.app/) 👈🏻 click!
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/70660000-f2e1-424e-8573-55f96397b751/deploy-status)](https://app.netlify.com/sites/elegant-brigadeiros-178dab/deploys)
 
 1. [팀 소개](#팀-소개)
    - 팀원 소개
