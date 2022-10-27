@@ -8,8 +8,8 @@
    - 팀원 소개
    - 소통 방식과 과제 진행 방식
 2. [프로젝트 소개](#프로젝트-소개)
-   - 폴더 구조
    - 프로젝트 구조
+   - 폴더 구조
 3. [우리 팀의 Best Practice](#우리-팀의-best-practice)
 
 ---
@@ -111,8 +111,6 @@
 
 - 투두리스트는 기본적인 CRUD 기능이 있습니다.
 
-### 폴더 구조
-
 ### 프로젝트 구조
 
 <div align="center">
@@ -128,21 +126,69 @@
   - TodoItem 또한 Todo를 렌더링 하는 역할만 합니다.
   - TodoItem에서 일어나는 상태변화는 TodoItem에서 처리하지 않고 상태가 모여있는 TodoPage에서 처리하게끔 하여 단방향 데이터 흐름을 유지합니다.
 
+### 폴더 구조
+
+<details>
+<summary>폴더 구조</summary>
+<div markdown="1">
+
+```
+src
+ ┣ apis
+ ┃ ┗ index.ts
+ ┣ components
+ ┃ ┣ Form
+ ┃ ┃ ┣ FormContainer.tsx
+ ┃ ┃ ┣ FormField.tsx
+ ┃ ┃ ┗ index.ts
+ ┃ ┗ Todo
+ ┃ ┃ ┣ TodoForm.tsx
+ ┃ ┃ ┣ TodoItem.tsx
+ ┃ ┃ ┣ TodoList.tsx
+ ┃ ┃ ┗ index.ts
+ ┣ hooks
+ ┃ ┗ useInputValidation.ts
+ ┣ pages
+ ┃ ┣ Login
+ ┃ ┃ ┗ index.tsx
+ ┃ ┣ SignUp
+ ┃ ┃ ┗ index.tsx
+ ┃ ┣ Todo
+ ┃ ┃ ┗ index.tsx
+ ┃ ┗ index.ts
+ ┣ routes
+ ┃ ┣ ProtectedRoute.tsx
+ ┃ ┣ index.tsx
+ ┃ ┗ routePaths.tsx
+ ┣ utils
+ ┃ ┣ axiosHandlers.ts
+ ┃ ┣ debounce.ts
+ ┃ ┣ localStorage.ts
+ ┃ ┣ toggleManager.ts
+ ┃ ┗ validate.ts
+ ┣ App.tsx
+ ┣ index.tsx
+ ┗ types.ts
+```
+
+</div>
+</details>
+
 ---
 
 ## 우리 팀의 Best-Practice
 
 ### 1. 타입스크립트, 사용할까요?
 
-**타입스크립트는 개발자 경험을 향상시킵니다.**
+💡 **타입스크립트는 개발자 경험을 향상시킵니다.**
 
 자바스크립트는 타입을 지원하지 않는 점에서 빠르게 개발을 할 수 있다는 장점이 있습니다. 하지만 더불어 잠재적인 에러를 불러일으킬 수도 있어요. 타입스크립트 사용은 조금 시간이 걸릴 수도 있겠지만 잘 사용한다면 잠재적인 에러를 사전에 검출할 수도 있고 개발자 경험이 매우 높아집니다. 예를 들어 자바스크립트로만 개발할 경우 Todo 라는 객체 안에 어떤 프로퍼티가 존재하는지 모를 수 있습니다. (jsDoc 같은 것을 사용하지 않는다면) 하지만 타입스크립트는 모두 타입을 정의해주어야 하기 때문에 가독성이 크게 향상됩니다.
 
 ### 2. 라우팅과 리다이렉트
 
-- 🤔 **Context API를 사용하지 않고도 유저 인증을 할 수 있을까?**
+🤔 **"Context API를 사용하지 않고도 유저 인증을 할 수 있을까?"**
 
-- 🤔 라우터가 바로 페이지 컴포넌트를 불러오지 않고 **페이지 컴포넌트를 children으로 가지는 컴포넌트를 불러온다면?**
+🤔 "라우터가 바로 페이지 컴포넌트를 불러오지 않고 **페이지 컴포넌트를 children으로 가지는 컴포넌트를 불러온다면?**"
 
 Context API는 좋은 기능이지만 팀 내부에서 정말 신선하면서도 좋은 방법으로 선정된 `ProtectedRouter` 방법을 채택했습니다.
 
