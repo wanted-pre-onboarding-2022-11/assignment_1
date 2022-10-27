@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { todoAPI } from "@/apis";
 import ROUTE_PATH from "@/routes/routePaths";
 import { handleAxiosError } from "@/utils/axiosHandlers";
+import todoManager from "@/utils/toggleManager";
 
 const Todo = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const Todo = () => {
         return todo;
       });
       setTodos(nextTodos);
-      // todoManager.toggleTodo(toggledTodo);
+      todoManager.toggleTodo(toggledTodo);
     } catch (e) {
       handleAxiosError(e, redirectLoginPage);
     }
