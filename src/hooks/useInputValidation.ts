@@ -10,13 +10,13 @@ type InputValue = {
   [name: string]: string;
 };
 
-type ResultValue = {
+type ValidationResults = {
   [name: string]: ValidationResult;
 };
 
 type InputEvent = ChangeEvent<HTMLInputElement> | FocusEvent<HTMLInputElement>;
 
-const getInitialValues = (names: string[]): [InputValue, ResultValue] =>
+const getInitialValues = (names: string[]): [InputValue, ValidationResults] =>
   names.reduce(
     ([values, results], name) => [
       { ...values, [name]: "" },
@@ -28,20 +28,20 @@ const getInitialValues = (names: string[]): [InputValue, ResultValue] =>
 const useInputValidation = ({ names, validate }: InputValidationParam) => {
   const [initValues, initResults] = getInitialValues(names);
   const [values, setValues] = useState(initValues);
-  const [results, setResults] = useState(initResults);
+  const [validationResults, setValidationResults] = useState(initResults);
   const [isAllPass, setAllPass] = useState(false);
 
   const eventHandler = ({ target }: InputEvent, payload?: any) => {
     const { name, value } = target;
     setValues({ ...values, [name]: value });
-    setResults({ ...results, [name]: validate(name, value, payload) });
+    setValidationResults({ ...validationResults, [name]: validate(name, value, payload) });
   };
 
   useEffect(() => {
-    setAllPass(names.reduce((acc, name) => acc && results[name].isPass, true));
-  }, [results]);
+    setAllPass(names.reduce((acc, name) => acc && validationResults[name].isPass, true));
+  }, [validationResults]);
 
-  return { values, setValues, results, isAllPass, eventHandler };
+  return { values, setValues, validationResults, isAllPass, eventHandler };
 };
 
 export default useInputValidation;
