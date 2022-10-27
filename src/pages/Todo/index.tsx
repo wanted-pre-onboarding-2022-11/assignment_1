@@ -1,5 +1,3 @@
-import TodoForm from "@/components/TodoForm";
-import TodoList from "@/components/TodoList";
 import { ITodo } from "@/types";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +6,7 @@ import { todoAPI } from "@/apis";
 import ROUTE_PATH from "@/routes/routePaths";
 import { handleAxiosError } from "@/utils/axiosHandlers";
 import todoManager from "@/utils/toggleManager";
+import { TodoForm, TodoList } from "@/components/Todo";
 
 const Todo = () => {
   const navigate = useNavigate();

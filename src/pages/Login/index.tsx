@@ -1,12 +1,11 @@
 import React, { FormEvent } from "react";
-import FormField from "@/components/FormField";
 import useInputValidation from "@/hooks/useInputValidation";
 import validate from "@/utils/validate";
-import FormContainer from "@/components/FormContainer";
 import { Link, useNavigate } from "react-router-dom";
 import ROUTE_PATH from "@/routes/routePaths";
 import { accountAPI } from "@/apis";
 import { saveAccessToken } from "@/utils/localStorage";
+import { FormContainer, FormField } from "@/components/Form";
 
 const LogIn = () => {
   const navigate = useNavigate();

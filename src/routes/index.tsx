@@ -1,8 +1,6 @@
-import Login from "@/pages/Login";
-import SignUp from "@/pages/Signup";
-import Todo from "@/pages/Todo";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Login, SignUp, Todo } from "@/pages";
 import ProtectedRoute from "./ProtectedRoute";
 import ROUTE_PATH from "./routePaths";
 

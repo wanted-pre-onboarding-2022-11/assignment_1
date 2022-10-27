@@ -1,28 +1,24 @@
 import React, { InputHTMLAttributes } from "react";
 import styled from "styled-components";
-import ErrorText from "./ErrorText";
 
 interface FormFieldProp extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   errorText?: string;
 }
 
-const FormField: React.ForwardRefRenderFunction<HTMLInputElement, FormFieldProp> = (
-  { label, errorText, ...props }: FormFieldProp,
-  ref,
-) => {
+const FormField = ({ label, errorText, ...props }: FormFieldProp) => {
   return (
     <Field>
       <label htmlFor={props.name}>{label}</label>
-      <input ref={ref} autoComplete="off" {...props} />
-      {errorText && <ErrorText message={errorText} />}
+      <input autoComplete="off" {...props} />
+      {errorText && <ErrorText>errorText</ErrorText>}
     </Field>
   );
 };
 
-export default React.forwardRef(FormField);
+export default FormField;
 
-const Field = styled.div`
+export const Field = styled.div`
   display: flex;
   width: 60%;
   flex-direction: column;
@@ -37,4 +33,8 @@ const Field = styled.div`
   input {
     height: 20px;
   }
+`;
+
+export const ErrorText = styled.div`
+  color: tomato;
 `;

@@ -1,6 +1,6 @@
-import { getAccessToken } from "@/utils/localStorage";
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
+import { getAccessToken } from "@/utils/localStorage";
 
 const ProtectedRoute = ({
   children,
