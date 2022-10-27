@@ -1,3 +1,4 @@
+import Login from "@/pages/Login";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
@@ -11,7 +12,7 @@ const Router = () => {
           path={ROUTE_PATH.BASE}
           element={
             <ProtectedRoute isTokenRequired redirectPath={ROUTE_PATH.TODO_LIST}>
-              <h1>로그인</h1>
+              <Login />
             </ProtectedRoute>
           }
         />
