@@ -1,3 +1,4 @@
+import { ITodo } from "@/types";
 import { getAccessToken } from "@/utils/localStorage";
 import axios, { AxiosRequestConfig } from "axios";
 
@@ -6,13 +7,6 @@ const { REACT_APP_API_END_POINT } = process.env;
 interface RequestBody {
   email: string;
   password: string;
-}
-
-interface ITodo {
-  id: number;
-  todo: string;
-  isCompleted: boolean;
-  userId: number;
 }
 
 export const api = axios.create({
@@ -50,14 +44,14 @@ export const todoAPI = {
     return response.data;
   },
   addTodo: async (todo: string): Promise<ITodo> => {
-    const response = await api.post("todos", todo);
+    const response = await api.post("todos", { todo });
     return response.data;
   },
   deleteTodo: async (id: number) => {
     const response = await api.delete(`todos/${id}`);
     return response;
   },
-  upDateTodo: async (
+  updateTodo: async (
     id: number,
     { todo, isCompleted }: { todo: string; isCompleted: boolean },
   ): Promise<ITodo> => {
