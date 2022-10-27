@@ -1,7 +1,7 @@
 import { getAccessToken } from "@/utils/localStorage";
 import axios, { AxiosRequestConfig } from "axios";
 
-const { API_END_POINT } = process.env;
+const { REACT_APP_API_END_POINT } = process.env;
 
 interface RequestBody {
   email: string;
@@ -17,7 +17,7 @@ interface ITodo {
 
 export const api = axios.create({
   // baseURL: process.env.REACT_APP_URL,
-  baseURL: API_END_POINT as string,
+  baseURL: REACT_APP_API_END_POINT as string,
   timeout: 2000,
 });
 
