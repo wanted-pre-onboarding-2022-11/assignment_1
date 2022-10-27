@@ -1,4 +1,5 @@
 import Login from "@/pages/Login";
+import SignUp from "@/pages/Signup";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
@@ -21,7 +22,7 @@ const Router = () => {
           path={ROUTE_PATH.SIGN_UP}
           element={
             <ProtectedRoute isTokenRequired redirectPath={ROUTE_PATH.TODO_LIST}>
-              <h1>회원가입</h1>
+              <SignUp />
             </ProtectedRoute>
           }
         />
