@@ -2,9 +2,9 @@ import React, { FormEvent } from "react";
 import useInputValidation from "@/hooks/useInputValidation";
 import FormField from "@/components/FormField";
 import validate from "@/utils/validate";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ROUTE_PATH from "@/routes/routePaths";
+import FormContainer from "@/components/FormContainer";
 
 const SignUp = () => {
   const { results, isAllPass, eventHandler } = useInputValidation({
@@ -56,33 +56,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
-const FormContainer = styled.div`
-  width: 400px;
-  border: 3px solid gray;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  form {
-    box-sizing: border-box;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-  }
-
-  h1 {
-    margin: 0;
-    padding: 0;
-  }
-
-  button {
-    padding: 4px 8px;
-    font-size: 16px;
-    margin: 10px 0 20px;
-  }
-`;
