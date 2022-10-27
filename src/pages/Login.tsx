@@ -3,20 +3,29 @@ import FormField from "@/components/FormField";
 import useInputValidation from "@/hooks/useInputValidation";
 import validate from "@/utils/validate";
 import FormContainer from "@/components/FormContainer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ROUTE_PATH from "@/routes/routePaths";
+import { accountAPI } from "@/apis";
+import { saveAccessToken } from "@/utils/localStorage";
 
 const LogIn = () => {
-  const { results, isAllPass, eventHandler } = useInputValidation({
+  const navigate = useNavigate();
+  const { values, results, isAllPass, eventHandler } = useInputValidation({
     names: ["email", "password"],
     validate,
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // console.log(values);
-    // TODO
-    // 여기서 api 요청을 한다.
+    try {
+      const res = await accountAPI.postLogin(values as { email: string; password: string });
+      saveAccessToken(res.access_token);
+      navigate(ROUTE_PATH.TODO_LIST, {
+        replace: true,
+      });
+    } catch (e) {
+      alert("아이디 비밀번호를 확인해주세요");
+    }
   };
 
   return (
