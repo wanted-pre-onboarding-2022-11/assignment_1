@@ -1,5 +1,6 @@
 import Login from "@/pages/Login";
 import SignUp from "@/pages/Signup";
+import Todo from "@/pages/Todo";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
@@ -30,7 +31,7 @@ const Router = () => {
           path={ROUTE_PATH.TODO_LIST}
           element={
             <ProtectedRoute isTokenRequired={false} redirectPath={ROUTE_PATH.BASE}>
-              <h1>투두 리스트</h1>
+              <Todo />
             </ProtectedRoute>
           }
         />
