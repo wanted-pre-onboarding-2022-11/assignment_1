@@ -2,20 +2,30 @@ import React, { FormEvent } from "react";
 import useInputValidation from "@/hooks/useInputValidation";
 import FormField from "@/components/FormField";
 import validate from "@/utils/validate";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ROUTE_PATH from "@/routes/routePaths";
 import FormContainer from "@/components/FormContainer";
+import { accountAPI } from "@/apis";
+import { saveAccessToken } from "@/utils/localStorage";
 
 const SignUp = () => {
-  const { results, isAllPass, eventHandler } = useInputValidation({
+  const navigate = useNavigate();
+  const { values, results, isAllPass, eventHandler } = useInputValidation({
     names: ["email", "password", "checkPassword"],
     validate,
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // TODO
-    // 여기서 회원가입 요청을 한다.
+    try {
+      const res = await accountAPI.postSignUp(values as { email: string; password: string });
+      saveAccessToken(res.access_token);
+      navigate(ROUTE_PATH.TODO_LIST, {
+        replace: true,
+      });
+    } catch (e) {
+      alert("중복된 이메일입니다.");
+    }
   };
 
   return (
@@ -43,7 +53,7 @@ const SignUp = () => {
           name="checkPassword"
           label="비밀번호 확인 *"
           placeholder="비밀번호를 다시 입력해주세요"
-          onBlur={eventHandler}
+          onBlur={(e) => eventHandler(e, values.password)}
           errorText={results.checkPassword.isError ? results.checkPassword.errorMsg : ""}
         />
         <button type="submit" disabled={!isAllPass}>
