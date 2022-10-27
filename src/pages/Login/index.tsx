@@ -17,8 +17,11 @@ const LogIn = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const res = await accountAPI.postLogin(values as { email: string; password: string });
-      saveAccessToken(res.access_token);
+      const response = await accountAPI.postLogin({
+        email: values.email,
+        password: values.password,
+      });
+      saveAccessToken(response.access_token);
       navigate(ROUTE_PATH.TODO_LIST, {
         replace: true,
       });
