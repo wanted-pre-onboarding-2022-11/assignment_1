@@ -3,8 +3,10 @@ import FormField from "@/components/FormField";
 import useInputValidation from "@/hooks/useInputValidation";
 import validate from "@/utils/validate";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import ROUTE_PATH from "@/routes/routePaths";
 
-const LogInPage = () => {
+const LogIn = () => {
   const { results, isAllPass, eventHandler } = useInputValidation({
     names: ["email", "password"],
     validate,
@@ -41,11 +43,12 @@ const LogInPage = () => {
           로그인
         </button>
       </form>
+      <Link to={ROUTE_PATH.SIGN_UP}>회원가입</Link>
     </FormContainer>
   );
 };
 
-export default LogInPage;
+export default LogIn;
 
 const FormContainer = styled.div`
   width: 400px;
