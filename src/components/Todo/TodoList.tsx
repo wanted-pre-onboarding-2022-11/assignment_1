@@ -13,10 +13,10 @@ interface TodoListProps {
 const TodoList = ({ todos, onDeleteTodo, onToggleTodo, onEditTodo }: TodoListProps) => {
   return (
     <Container>
-      {todos.map((todo) => (
+      {todos.map((todoItem) => (
         <TodoItem
-          key={todo.id}
-          todo={todo}
+          key={todoItem.id}
+          todoItem={todoItem}
           onDeleteTodo={onDeleteTodo}
           onToggleTodo={onToggleTodo}
           onEditTodo={onEditTodo}
