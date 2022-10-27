@@ -11,7 +11,7 @@ const FormField = ({ label, errorText, ...props }: FormFieldProp) => {
     <Field>
       <label htmlFor={props.name}>{label}</label>
       <input autoComplete="off" {...props} />
-      {errorText && <ErrorText>errorText</ErrorText>}
+      {errorText && <ErrorText>{errorText}</ErrorText>}
     </Field>
   );
 };
