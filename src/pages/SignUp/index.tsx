@@ -9,7 +9,7 @@ import { FormContainer, FormField } from "@/components/Form";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const { values, validationResults, isAllPass, eventHandler } = useInputValidation({
+  const { values, validationResults, isAllPass, handleEvent } = useInputValidation({
     names: ["email", "password", "checkPassword"],
     validate,
   });
@@ -39,7 +39,7 @@ const SignUp = () => {
           name="email"
           label="이메일 *"
           placeholder="이메일을 입력해주세요"
-          onBlur={eventHandler}
+          onBlur={handleEvent}
           errorText={validationResults.email.isError ? validationResults.email.errorMsg : ""}
         />
         <FormField
@@ -47,7 +47,7 @@ const SignUp = () => {
           name="password"
           label="비밀번호 *"
           placeholder="8자 이상의 비밀번호를 입력해주세요"
-          onBlur={eventHandler}
+          onBlur={handleEvent}
           errorText={validationResults.password.isError ? validationResults.password.errorMsg : ""}
         />
         <FormField
@@ -55,7 +55,7 @@ const SignUp = () => {
           name="checkPassword"
           label="비밀번호 확인 *"
           placeholder="비밀번호를 다시 입력해주세요"
-          onBlur={(e) => eventHandler(e, values.password)}
+          onBlur={(e) => handleEvent(e, values.password)}
           errorText={
             validationResults.checkPassword.isError ? validationResults.checkPassword.errorMsg : ""
           }

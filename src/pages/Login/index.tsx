@@ -9,7 +9,7 @@ import { FormContainer, FormField } from "@/components/Form";
 
 const LogIn = () => {
   const navigate = useNavigate();
-  const { values, validationResults, isAllPass, eventHandler } = useInputValidation({
+  const { values, validationResults, isAllPass, handleEvent } = useInputValidation({
     names: ["email", "password"],
     validate,
   });
@@ -39,7 +39,7 @@ const LogIn = () => {
           name="email"
           type="email"
           placeholder="이메일"
-          onBlur={eventHandler}
+          onBlur={handleEvent}
           errorText={validationResults.email.isError ? validationResults.email.errorMsg : ""}
         />
         <FormField
@@ -47,7 +47,7 @@ const LogIn = () => {
           name="password"
           type="password"
           placeholder="비밀번호"
-          onBlur={eventHandler}
+          onBlur={handleEvent}
           errorText={validationResults.password.isError ? validationResults.password.errorMsg : ""}
         />
         <button type="submit" disabled={!isAllPass}>

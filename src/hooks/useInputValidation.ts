@@ -31,7 +31,7 @@ const useInputValidation = ({ names, validate }: InputValidationParam) => {
   const [validationResults, setValidationResults] = useState(initResults);
   const [isAllPass, setAllPass] = useState(false);
 
-  const eventHandler = ({ target }: InputEvent, payload?: any) => {
+  const handleEvent = ({ target }: InputEvent, payload?: any) => {
     const { name, value } = target;
     setValues({ ...values, [name]: value });
     setValidationResults({ ...validationResults, [name]: validate(name, value, payload) });
@@ -41,7 +41,7 @@ const useInputValidation = ({ names, validate }: InputValidationParam) => {
     setAllPass(names.reduce((acc, name) => acc && validationResults[name].isPass, true));
   }, [validationResults]);
 
-  return { values, setValues, validationResults, isAllPass, eventHandler };
+  return { values, setValues, validationResults, isAllPass, handleEvent };
 };
 
 export default useInputValidation;
