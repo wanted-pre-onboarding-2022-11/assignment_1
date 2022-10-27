@@ -99,7 +99,9 @@
 
 ## 프로젝트 소개
 
-(gif)
+<div align="center">
+<img src="./images/demo.gif">
+</div>
 
 - 로그인 페이지, 회원가입 페이지, 투두리스트 페이지가 존재하는 SPA 입니다.
 
