@@ -10,7 +10,6 @@ interface RequestBody {
 }
 
 export const api = axios.create({
-  // baseURL: process.env.REACT_APP_URL,
   baseURL: REACT_APP_API_END_POINT as string,
   timeout: 2000,
 });
